@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+       <header class="main-header">
+            <!-- header-top -->
+            <div class="header-top">
+                <div class="outer-container">
+                    <ul class="social-links clearfix clearfix2">
+                        <li>
+                            <h5>Social Connect</h5>
+                        </li>
+                        <li><a href="https://www.facebook.com/goalbiooilofficial" target="_blank"><i
+                                    class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-square-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-instagram-square"></i></a></li>
+                        <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                    </ul>
+                    <div class="text">
+                        <h5>Toll Free Number :
+                            <a class="text-dark" href="tel:1800 212 3630">1800 212 3630</a>
+                        </h5>
+                    </div>
+                    <ul class="links-list clearfix">
+                        <li><a href="/enquiry-form">Enquiry</a></li>
+                        <li><a href="/appointment-form">Appointment</a></li>
+                        <li><a href="ro-list.php">RO List</a></li>
+                        <li><a href="dealership.php">Dealership</a></li>
+                      
+                        
+                    </ul>
+                      {{#if user}}
+                        <li class="profileuser" id="userpro"><a href="#"><i class="fa-solid fa-user"></i> Profile</a>
+                      
+                        </li>
+                          <div class="user-drp" id="user-drp">
+                           <div style="display: flex; align-items:center;justify-content: space-between;margin-bottom: 30px;">
+                             <div class="xmar" id="clspro">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                           
+                            <h5 style="text-align: center;"> <span>Wellcome-</span>{{user.username}}</h5>
+                           </div>
+
+                           <form id="clockin-form" action="/clockin" method="post">
+  <button type="button" onclick="clockIn(event)">Clock In</button>
+</form>
+
+<!-- Clock Out button -->
+<form id="clockout-form" action="/clockout" method="post">
+  <button type="button" onclick="clockOut()">Clock Out</button>
+</form>
+  <a class="dropdown-item log" href="/logout"><i class="fas fa-power-off mr-2"></i>Logout</a>
+<div id="timer"></div>
+                            <div class="targetbox">
+                                <div class="card1">
+                                    <h5 style="color: rgb(0, 0, 0);">PANDING TARGET</h5>
+                                    
+                                    <h5 style="color: rgb(0, 0, 0);font-weight:800 ">5</h5>
+                                </div>
+                                <div class="card1">
+                                     <h5 style="color: white;">COMPLETED</h5>
+                                    
+                                    <h5 style="color: white;font-weight:800 ">2</h5>
+                                </div>
+                            </div>
+
+
+                            <!-- Clock In button -->
+
+{{#if user.clockHistory.length}}
+  <ul style="margin-top: 20px;">
+    {{#each user.clockHistory}}
+      <li>
+        {{formatTimestamp timestamp}} 
+        {{#if duration}}
+          (Duration: {{duration}})
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No clock history available.</p>
+{{/if}}
+
+                           
+                        </div>
+                        {{/if}}
+                </div>
+            </div>
+            <!-- header-lower -->
+            <div class="header-lower">
+                <div class="outer-container">
+                    <div class="outer-box">
+                        <div class="menu-left-content">
+                            <figure class="logo-box"><a href="./"><img src="assets/images/logo.png"
+                                        alt="Goal Bio Oil" /></a>
+                            </figure>
+                        </div>
+                        <div class="menu-area clearfix">
+                            <!--Mobile Navigation Toggler-->
+                            <div class="mobile-nav-toggler">
+                                <i class="icon-bar"></i>
+                                <i class="icon-bar"></i>
+                                <i class="icon-bar"></i>
+                            </div>
+                            <nav class="main-menu navbar-expand-md navbar-light">
+                                <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
+                                    <ul class="navigation clearfix">
+                                        <li class="current"><a href="./">Home</a> </li>
+
+                                        <li class="dropdown"><a href="./">About Us</a>
+                                            <ul>
+                                                <li><a href="overview.php">Company Overview</a></li>
+                                                <li><a href="vision-mission.php">Vision & Mission</a></li>
+                                                <li><a href="about-bio-fuel.php">About Bio Fuel</a></li>
+                                                <li><a href="bio-diesel-and-diesel.php">Bio Diesel &
+                                                        Diesel Difference</a></li>
+                                                <li><a href="#">FAQ</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Services</a></li>
+                                        <li class="dropdown"><a href="#">Our Products</a>
+                                            <ul>
+                                                <li><a href="bio-diesel.php">Bio Diesel</a></li>
+                                                <li><a href="lubricants.php">Lubricants</a></li>
+                                                <li><a href="lpg-cylinder.php">LPG Cylinder</a></li>
+                                                <li><a href="#">Bio Petrol</a></li>
+                                                <li><a href="#">20% Ethanol Mixed Petrol</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#">Our Depot</a>
+                                            <ul>
+                                                <li><a href="bihar-depot.php">Bihar Depot</a></li>
+                                                <li><a href="north-east-depot.php">North East Depot
+                                                        (NE)</a></li>
+                                                <li><a href="west-bangal-depot.php">West Bengal Depot</a></li>
+                                                <li><a href="odissa-depot.php">Odissa Depot</a></li>
+                                                <li><a href="gujrat-depot.php">Gujrat Depot</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li><a href="#">Impex</a></li>
+                                        <li><a href="#">Business Opportunity</a></li>
+                                        <li class="dropdown"><a href="#">Gallery</a>
+                                            <ul>
+                                                <li><a href="photo-gallery.php">Photo Gallery</a></li>
+                                                <li><a href="video-gallery.php">Video Gallery</a></li>
+                                                <li><a href="news.php">News</a></li>
+                                                <li><a href="notice.php">Notice</a></li>
+                                                <li><a href="#">Company Document</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="contact.php">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="menu-right-content">
+                            <div class="btn-box">
+                                <div class="icon-box"><i class="fa-duotone fa-user"></i></div>
+                                <a href="dealership.php">Apply Now<i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--sticky Header-->
+            <div class="sticky-header">
+                <div class="outer-container">
+                    <div class="outer-box">
+                        <div class="menu-left-content">
+                            <figure class="logo-box"><a href="./"><img src="assets/images/logo.png"
+                                        alt="Goal Bio Oil" /></a>
+                            </figure>
+                        </div>
+                        <div class="menu-area clearfix">
+                            <nav class="main-menu clearfix">
+                                <!--Keep This Empty / Menu will come through Javascript-->
+                            </nav>
+                        </div>
+                        <div class="menu-right-content">
+                            <div class="btn-box">
+                                <div class="icon-box"><i class="fa-sharp fa-solid fa-circle-dollar-to-slot"></i></div>
+                                <a href="./">Apply Now<i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+          <!-- scroll to top -->
+        <button class="scroll-top scroll-to-target" data-target="html">
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+    
+</body>
+
+<script>
+    let timerInterval;
+
+    // Function to initialize the timer on page load
+    function initializeTimer() {
+        const savedTimerValue = parseInt(sessionStorage.getItem('timerValue')) || 0;
+
+        // Check if the timer was running before the page reload
+        if (savedTimerValue > 0) {
+            startTimer(savedTimerValue);
+            $('#timer').text(formatTime(savedTimerValue));
+            $('#clockin-form button').prop('disabled', true); // Disable Clock In button
+        }
+    }
+
+    // Call the initializeTimer function on page load
+    $(document).ready(function () {
+        initializeTimer();
+    });
+
+    function startTimer(initialSeconds = 0) {
+        let seconds = initialSeconds;
+        timerInterval = setInterval(function () {
+            seconds++;
+            $('#timer').text(formatTime(seconds));
+            sessionStorage.setItem('timerValue', seconds);
+        }, 1000);
+    }
+
+    function stopTimer() {
+        clearInterval(timerInterval);
+    }
+
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    }
+
+  function clockIn(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    const savedTimerValue = parseInt(sessionStorage.getItem('timerValue')) || 0;
+
+    // Check if the timer is not already running
+    if (savedTimerValue === 0) {
+        startTimer(savedTimerValue);
+    }
+
+    $('#timer').text(formatTime(savedTimerValue));
+    $('#clockin-form button').prop('disabled', true);
+
+    // Use jQuery to submit the form asynchronously
+    $.ajax({
+        type: 'POST',
+        url: '/clockin', // Replace with the actual URL
+        data: $('#clockin-form').serialize(),
+        success: function (response) {
+            // Handle the success response if needed
+        },
+        error: function (error) {
+            // Handle the error if needed
+        }
+    });
+}
+
+
+    function clockOut() {
+        stopTimer();
+        $('#clockin-form button').prop('disabled', false);
+        sessionStorage.removeItem('timerValue');
+        document.getElementById('clockout-form').submit();
+    }
+</script>
+
+
+</html>
